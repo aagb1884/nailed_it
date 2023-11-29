@@ -7,9 +7,21 @@ const MainUI = ({numberOfLoops, setNumberOfLoops}) => {
     function play() {
         const audio = document.getElementById("audio")
         audio.play();
-    }
 
-    //audio plays. audio does not play the number of times specified.
+        var loops = numberOfLoops;
+        var count = 0;
+
+        audio.onended = function() {
+            if(count <= loops){
+                count++;
+                audio.play()
+            }
+        }
+      
+    }
+    //audio plays number of times specified
+
+  
 
     return ( 
         <section className="main-interface">
@@ -32,5 +44,6 @@ const MainUI = ({numberOfLoops, setNumberOfLoops}) => {
         </section>
      );
 }
+
  
 export default MainUI;
